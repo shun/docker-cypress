@@ -41,5 +41,4 @@ RUN apt update \
 USER $USERNAME
 WORKDIR /home/$USERNAME/
 
-RUN yarn global add cypress \
-    && which cypress
+RUN yarn global add cypress
