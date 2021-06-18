@@ -42,4 +42,4 @@ USER $USERNAME
 WORKDIR /home/$USERNAME/
 
 RUN yarn global add cypress \
-    && cypress info
+    && which cypress
