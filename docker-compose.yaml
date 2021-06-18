@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  cypress:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      #args:
+      #  http_proxy: ${http_proxy}
+      #  https_proxy: ${http_proxy}
+      #  no_proxy: ${no_proxy}
+    #environment:
+    volumes:
+      - ./cypress:/home/node/cypress
+    #ports:
+    #entrypoint:
+    tty: true
+    command: bash
+    #working_dir:
+    #logging:
+    #  driver: "json-file" # defaults if not specified
+    #  options:
+    #    max-size: "1m"
+    #    max-file: "1"
