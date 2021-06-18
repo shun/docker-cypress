@@ -36,10 +36,11 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd -g $GID $GROUPNAME && useradd -m -s /bin/bash -u $UID -g $GID $USERNAME \
     && npm install -g yarn \
-    && yarn global add cypress \
-    && yarn cache clean --all \
-    && npm cache clean --force \
-    && cypress info
+    && npm cache clean --force
 
 USER $USERNAME
 WORKDIR /home/$USERNAME/
+
+RUN yarn global add cypress \
+    &&yarn cache clean --all \
+    && cypress info
