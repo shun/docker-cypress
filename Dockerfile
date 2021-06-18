@@ -42,5 +42,7 @@ USER $USERNAME
 WORKDIR /home/$USERNAME/
 
 RUN yarn global add cypress \
-    &&yarn cache clean --all \
+    && which cypress \
+    && yarn cache clean --all \
+    && which cypress \
     && cypress info
