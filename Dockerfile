@@ -19,6 +19,8 @@ RUN apt update \
     && curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
     && apt update \
     && apt install -y \
+        locales \
+        fonts-noto-cjk \
         google-chrome-stable \
         firefox \
         nodejs \
@@ -34,9 +36,13 @@ RUN apt update \
         xauth \
         xvfb \
     && rm -rf /var/lib/apt/lists/* \
+    && locale-gen ja_JP.UTF-8 \
     && groupadd -g $GID $GROUPNAME && useradd -m -s /bin/bash -u $UID -g $GID $USERNAME \
     && npm install -g yarn \
     && npm cache clean --force
+
+ENV LANG ja_JP.UTF-8
+ENV LC_CTYPE ja_JP.UTF-8
 
 USER $USERNAME
 WORKDIR /home/$USERNAME/

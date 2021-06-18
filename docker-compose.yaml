@@ -12,6 +12,7 @@ services:
       #  no_proxy: ${no_proxy}
     #environment:
     volumes:
+      - ./cypress.json:/home/node/cypress.json
       - ./cypress:/home/node/cypress
       - ./entrypoint.sh:/entrypoint.sh
     #ports:
