@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   cypress:
+    image: kudoshunsuke/docker-cypress
     build:
       context: ./
       dockerfile: ./Dockerfile
@@ -12,11 +13,13 @@ services:
     #environment:
     volumes:
       - ./cypress:/home/node/cypress
+      - ./entrypoint.sh:/entrypoint.sh
     #ports:
-    #entrypoint:
+    entrypoint: /entrypoint.sh
     tty: true
-    command: bash
-    #working_dir:
+    command: bash -c "cypress run -s cypress/integration/prod/login.spec.js"
+    #command: bash
+    working_dir: /home/node
     #logging:
     #  driver: "json-file" # defaults if not specified
     #  options:

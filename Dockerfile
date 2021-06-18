@@ -41,4 +41,5 @@ RUN apt update \
 USER $USERNAME
 WORKDIR /home/$USERNAME/
 
-RUN yarn global add cypress
+RUN yarn global add cypress \
+    && yarn cache clean --all
